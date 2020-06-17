@@ -1,0 +1,325 @@
+<html>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+ <script src="https://unpkg.com/vuex"></script>
+
+
+<div class="container" id="app">
+  <div class="tab">
+    
+    <div class="menu">
+      <div class="menu__item menu__item--first" :class="[ active === 0 ? 'is-active' : '']" @click="selectedContent(0)">CO</div>
+      <div class="menu__item menu__item--second" :class="[ active === 1 ? 'is-active' : '']" @click="selectedContent(1)">NO2</div>
+      <div class="menu__item menu__item--thirst" :class="[ active === 2 ? 'is-active' : '']" @click="selectedContent(2)">O3</div>
+      <div class="menu__item menu__item--thirst" :class="[ active === 2 ? 'is-active' : '']" @click="selectedContent(2)">PM 10</div>
+      <div class="menu__item menu__item--thirst" :class="[ active === 2 ? 'is-active' : '']" @click="selectedContent(2)">PM 2.5</div>
+      <div class="menu__item menu__item--thirst" :class="[ active === 2 ? 'is-active' : '']" @click="selectedContent(2)">SO2</div>
+      <div class="menu__line" :class="className"></div>
+    </div>
+    
+    <div class="contents">
+      <transition :name="animation" mode="out-in">
+        <div class="contents__content" v-if="active === 0" key="0">
+          
+          <h2>Carbon Monoxide</h2>
+          <p><strong>Sources :</strong>Typically originates from incomplete combustion of carbon fuels, such as that which occurs in car engines and power plants.</p>
+          <p><strong>Effects :</strong>When inhaled, carbon monoxide can prevent the blood from carrying oxygen. Exposure may cause dizziness.</p>
+        
+        </div>
+        
+        <div class="contents__content" v-if="active === 1" key="1">
+          <span class="material-icons">flash_on</span>
+          <h2>Second Section</h2>
+          <p>Molestiae dolore itaque at dolor, odio blanditiis sequi, tempore illum doloremque repellat dolores deserunt debitis, rem eaque! Magnam placeat esse vero quisquam!</p>
+          <button>Learn more</button>
+        </div>
+        
+        <div class="contents__content" v-if="active === 2" key="2">
+          <span class="material-icons">lock</span>
+          <h2>Thirst Section</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, cum maxime reprehenderit quisquam ratione eaque veritatis perspiciatis totam.</p>
+          <button>Learn more</button>
+        </div>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<div class="container" id="app">
+    <div class="tab">
+      
+      <div class="menu">
+        <div class="menu__item menu__item--first" :class="[ active === 0 ? 'is-active' : '']" @click="selectedContent(0)">Active</div>
+        <div class="menu__item menu__item--second" :class="[ active === 1 ? 'is-active' : '']" @click="selectedContent(1)">Asthama</div>
+        <div class="menu__item menu__item--thirst" :class="[ active === 2 ? 'is-active' : '']" @click="selectedContent(2)">Children</div>
+        <div class="menu__item menu__item--thirst" :class="[ active === 2 ? 'is-active' : '']" @click="selectedContent(2)">Elderly</div>
+        <div class="menu__item menu__item--thirst" :class="[ active === 2 ? 'is-active' : '']" @click="selectedContent(2)">General</div>
+        <div class="menu__item menu__item--thirst" :class="[ active === 2 ? 'is-active' : '']" @click="selectedContent(2)">Heart</div>
+        <div class="menu__line" :class="className"></div>
+      </div>
+      
+      <div class="contents">
+        <transition :name="animation" mode="out-in">
+          <div class="contents__content" v-if="active === 0" key="0">
+              <span class="material-icons">self_improvement</span>
+            <h2>Active</h2>
+            <p>It is recommended to limit the time you are near busy roads, construction sites, open fires and other sources of smoke. In addition, consider reducing the time you spend near industrial emission stacks. Staying indoors with an activated air filtration system would be best for your long term health.</p>
+            
+          </div>
+          
+          <div class="contents__content" v-if="active === 1" key="1">
+            <span class="material-icons">flash_on</span>
+            <h2>Second Section</h2>
+            <p>Molestiae dolore itaque at dolor, odio blanditiis sequi, tempore illum doloremque repellat dolores deserunt debitis, rem eaque! Magnam placeat esse vero quisquam!</p>
+            <button>Learn more</button>
+          </div>
+          
+          <div class="contents__content" v-if="active === 2" key="2">
+            <span class="material-icons">lock</span>
+            <h2>Thirst Section</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, cum maxime reprehenderit quisquam ratione eaque veritatis perspiciatis totam.</p>
+            <button>Learn more</button>
+          </div>
+        </transition>
+      </div>
+    </div>
+  </div>
+  
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            active: 0,
+            animation: 'fadeUp',
+            previous: 0,
+            className: ''
+        },
+        methods: {
+            selectedContent(index) {
+                this.active = index;
+    
+                if(index > this.previous) {
+                    this.animation = 'fadeUp';
+                }
+    
+                if(index < this.previous) {
+                    this.animation = 'fadeDown';
+                }
+    
+                this.previous = index;
+    
+                if(index === 1) {
+                    this.className = 'activeSecond'
+                } else if(index === 2) {
+                    this.className = 'activeThirst'
+                } else {
+                    this.className = ''
+                }
+            }
+        }
+    })
+    </script>
+<style>
+    :root {
+    --primary-light: #e9d9ff;
+    --primary: #643cf5;
+    --greyLight: #9ea9d6;
+    --greyLight-2: #c8d1f5;
+    --greyDark: #5a6181;
+ }
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+ }
+  html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    overflow-y: scroll;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: 0.6px;
+    line-height: 1.4;
+ }
+  .container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+  .tab {
+    width: 32rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--greyLight);
+ }
+  .menu {
+    display: flex;
+    justify-content: space-between;
+    width: 28rem;
+    position: relative;
+ }
+  .menu::after {
+    content: '';
+    position: absolute;
+    width: inherit;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    background: var(--greyLight-2);
+ }
+  .menu__item {
+    padding-bottom: 0.6rem;
+    margin: 0 1.4rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    cursor: pointer;
+ }
+  .menu__item.is-active {
+    color: var(--primary);
+ }
+  .menu__item--first:hover {
+    color: var(--primary);
+ }
+  .menu__item--first:hover:hover ~ .menu__line {
+    transform: translateX(0);
+    width: 6rem;
+ }
+  .menu__item--second:hover {
+    color: var(--primary);
+ }
+  .menu__item--second:hover:hover ~ .menu__line {
+    transform: translateX(9.4rem);
+    width: 8.2rem;
+ }
+  .menu__item--thirst:hover {
+    color: var(--primary);
+ }
+  .menu__item--thirst:hover:hover ~ .menu__line {
+    transform: translateX(21rem);
+    width: 7rem;
+ }
+  .menu__line {
+    position: absolute;
+    bottom: 0;
+    width: 6rem;
+    height: 100%;
+    border-bottom: 1px solid var(--primary);
+    z-index: 200;
+    pointer-events: none;
+    transition: all 0.5s ease;
+ }
+  .menu__line.activeSecond {
+    transform: translateX(9.4rem);
+    width: 8.2rem;
+ }
+  .menu__line.activeThirst {
+    transform: translateX(21rem);
+    width: 7rem;
+ }
+  .contents {
+    height: 22rem;
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+ }
+  .contents__content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+ }
+  .contents__content span {
+    color: var(--primary);
+    font-size: 3rem;
+    margin-bottom: 1.6rem;
+    padding: 1rem;
+    border-radius: 1.2rem;
+    background: var(--primary-light);
+ }
+  .contents__content h2 {
+    font-size: 1.8rem;
+    color: var(--greyDark);
+ }
+  .contents__content p {
+    font-size: 1.2rem;
+    margin: 1.6rem 0;
+ }
+  .contents__content button {
+    border: none;
+    outline: none;
+    background: none;
+    color: var(--primary);
+    font-family: inherit;
+    font-size: 1.4rem;
+    font-weight: 500;
+    cursor: pointer;
+ }
+  .contents__content button:hover {
+    border-bottom: 1px solid var(--primary);
+ }
+  .fadeUp-enter {
+    opacity: 0;
+ }
+  .fadeUp-enter-active {
+    animation: slide-in 0.3s ease-in-out forwards;
+    transition: opacity 0.3s;
+ }
+  .fadeUp-leave-active {
+    animation: slide-out 0.3s ease-in-out forwards;
+    transition: opacity 0.3s;
+    opacity: 0;
+ }
+  .fadeDown-enter {
+    opacity: 0;
+ }
+  .fadeDown-enter-active {
+    animation: slide-in-down 0.3s ease-in-out forwards;
+    transition: opacity 0.3s;
+ }
+  .fadeDown-leave-active {
+    animation: slide-out-down 0.3s ease-in-out forwards;
+    transition: opacity 0.3s;
+    opacity: 0;
+ }
+  @keyframes slide-in {
+    from {
+      transform: translateY(2rem);
+   }
+    to {
+      transform: translateY(0);
+   }
+ }
+  @keyframes slide-out {
+    from {
+      transform: translateY(0);
+   }
+    to {
+      transform: translateY(-2rem);
+   }
+ }
+  @keyframes slide-in-down {
+    from {
+      transform: translateY(-2rem);
+   }
+    to {
+      transform: translateY(0);
+   }
+ }
+  @keyframes slide-out-down {
+    from {
+      transform: translateY(0);
+   }
+    to {
+      transform: translateY(2rem);
+   }
+ }
+  
+  </style> 
+</html>

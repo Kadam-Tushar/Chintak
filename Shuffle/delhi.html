@@ -12,7 +12,7 @@
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
@@ -25,6 +25,10 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <!-- Vue.js files -->
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vuex"></script>
 
   <!-- =======================================================
   * Template Name: Shuffle - v2.0.0
@@ -133,7 +137,7 @@
           <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
               <i class="icofont-simple-smile"></i>
-              <span data-toggle="counter-up">312</span>
+              <span data-toggle="counter-up" id="aqi-id">312</span>
               <p><strong>AQI :</strong> Air Quality Index</p>
               <a href="https://aqicn.org/city/delhi/">Find out more &raquo;</a>
             </div>
@@ -142,27 +146,27 @@
           <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
               <i class="icofont-document-folder"></i>
-              <span data-toggle="counter-up">23</span> 
-              <p><strong>Dominant Pollutant : </strong> Carbon Monoxide. </p>
-              <a href="#">Find out more &raquo;</a>
+              <span data-toggle="counter-up" id='dom-conc-id'>23</span> 
+              <p id ="dominant-pollutant-id"><strong>Dominant Pollutant : </strong>Carbon Monoxide.</p>
+              
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
               <i class="icofont-live-support"></i>
-              <span data-toggle="counter-up">67</span>
-              <p><strong>Last Updated :</strong> Minutes Ago</p>
-              <a href="#">Find out more &raquo;</a>
+              <span data-toggle="counter-up" id='last-updated-id'>2</span>
+              <p><strong>Last Updated :</strong> Hours Ago</p>
+              
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
               <i class="icofont-users-alt-5"></i>
-              <span data-toggle="counter-up">234</span>
-              <p><strong>Population :</strong> in thousands:Number of people in that area</p>
-              <a href="#">Find out more &raquo;</a>
+              <span data-toggle="counter-up">3.1</span>
+              <p><strong>Population in Crores:</strong> : Number of people in that area</p>
+              <a href="https://worldpopulationreview.com/world-cities/delhi-population/">Reference &raquo;</a>
             </div>
           </div>
 
@@ -181,7 +185,7 @@
 
           <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
 
-            <div class="content">
+            <!-- <div class="content">
               <h3><strong>Health Recommendations for people in this area : </strong></h3>
               <p>
                 Becasue prevention is always better than cure.
@@ -226,15 +230,27 @@
                 </li>
 
               </ul>
-            </div>
+            </div> -->
+
 
           </div>
 
-          <div class="col-lg-4 align-items-stretch order-0 order-lg-1 img" style="background-image: url(assets/img/info-box.jpg);">&nbsp;</div>
+          <div style="padding-left:5%; height: 100%; width:100%;">
+            <div style="float:left;display:inline-block;"><img style="float:right;" src="assets/img/AQI.png"></div>
+            <div style="float:left;display:inline-block; width:51%; height: 70%; padding-top: 10%">
+              <!-- <span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span> -->
+              <div class="climacell-widget" data-apikey="wlSineIlG7KDWzVTUvn2CzcD3SCtdfBe" data-type="hourly" data-location-name="Delhi, India" data-location-lon="77.2217831" data-location-lat="28.68627380000001" data-size-mode="large" data-font-color="#6b7b97" data-background-color="#fff" data-font-family="verdana" data-weather-params="temp:C,precipitation:mm/hr,wind_speed:m/s,humidity:%,cloud_cover:%" data-precipitation-timeline="true" data-sunrise-sunset="true" data-allow-users-enter-address="true" ></div>
+            
+            </div>
+            
+          </div>
+          
+          <script type="text/javascript" src="https://widgets-viewer.climacell.co/v1/sdk.js"></script>
         </div>
 
       </div>
-    </section><!-- End Info Box Section -->
+    </section>
+    <!-- End Info Box Section -->
 
     <!-- ======= Our Portfolio Section ======= -->
     <section id="portfolio" class="portfolio section-bg">
@@ -401,5 +417,43 @@
   <script src="assets/js/main.js"></script>
 
 </body>
+<script>
+  
+  var http = new XMLHttpRequest();
+  // Delhi Lat and long
+  var lat="28.7041";
+  var long= "77.1025" ;
+  var api_key = "a8bf14b4b1ab4d7cb73c6c0e90f00eef"
+  var delhi="https://api.breezometer.com/air-quality/v2/current-conditions?lat="+lat+"&lon="+long+"&key="+api_key+"&features=local_aqi,health_recommendations,pollutants_concentrations";
+  var data,last_updated,aqi,dominant_pollutant,dom_pollutant_conc ;
+
+  http.open("GET",delhi,false);
+  http.send();
+  
+  if(http.status == 200){
+    data = JSON.parse(http.response);
+    console.log(data);
+    var update_datetime = data['data']['datetime'] ;
+    var timeBeforeinSecs = new Date(Date.parse(update_datetime)).getTime() / 1000 ;
+    last_updated = Math.ceil((Date.now()/1000 - timeBeforeinSecs)/(60*60)) ; 
+    aqi =  data['data']['indexes']['ind_cpcb']['aqi_display'];
+    dominant_pollutant = data['data']['indexes']['ind_cpcb']['dominant_pollutant'];
+    dom_pollutant_conc = data['data']['pollutants'][dominant_pollutant]['concentration']['value'];
+    dom_pollutant_conc_unit = data['data']['pollutants'][dominant_pollutant]['concentration']['units']+"";
+    dominant_pollutant = data['data']['pollutants'][dominant_pollutant]['display_name'];
+   // console.log(dom_pollutant_conc +" concent ? "+dom_pollutant_conc_unit);\document.getElementById("aqi-id").innerHTML = aqi;
+document.getElementById("last-updated-id").innerHTML = last_updated;
+document.getElementById("dominant-pollutant-id").innerHTML ="<strong>Dominant Pollutant :</strong> "+dominant_pollutant+" ("+dom_pollutant_conc_unit+" )";
+document.getElementById("dom-conc-id").innerHTML = dom_pollutant_conc;
+
+
+  }
+  else{
+    console.log("Delhi api call not working");
+  }
+
+
+
+</script>
 
 </html>

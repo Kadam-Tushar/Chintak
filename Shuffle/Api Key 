@@ -1,0 +1,35 @@
+Breezo Key = a8bf14b4b1ab4d7cb73c6c0e90f00eef
+climacell key = 3gpe4zdid4MVinzstKDWdXCszBz2XItu
+climacell key2 =wlSineIlG7KDWzVTUvn2CzcD3SCtdfBe
+
+call string = "https://api.breezometer.com/air-quality/v2/current-conditions?lat=19.0735&lon=72.8995&key=184bcc39ee3d43fab36d05c9de9feae3&features=local_aqi,health_recommendations,pollutants_concentrations"
+
+
+https://tiles.breezometer.com/v1/air-quality/breezometer-aqi/current-conditions/1/2/1.png?key=184bcc39ee3d43fab36d05c9de9feae3
+
+
+const CC_API_KEY = '';
+const CC_DATA_FIELD = '<your selected data field name here>';
+const CC_TIMESTAMP = 'now'; // or any ISO 8601 timestamp
+
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 7,
+    center: {lat: 42.355438, lng: -71.059914}
+  });
+
+  var imageMapType = new google.maps.ImageMapType({
+    getTileUrl: function(coord, zoom) {
+      if (zoom > 12) {
+        return null;
+      }
+
+      return `https://api.climacell.co/v3/weather/layers/${CC_DATA_FIELD}/${CC_TIMESTAMP}/{zoom}/{coord.x}/{coord.y}.png?apikey=${CC_API_KEY}`;
+    },
+    tileSize: new google.maps.Size(256, 256)
+  });
+
+  map.overlayMapTypes.push(imageMapType);
+}
+
+https://tiles.breezometer.com/v1/air-quality/breezometer-aqi/current-conditions/{1}/{2}/{1}.png?key=184bcc39ee3d43fab36d05c9de9feae3
