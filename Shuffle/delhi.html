@@ -67,7 +67,7 @@
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animated fadeInDown">21/30 cities with the worst air pollution are in India</h2>
-                <p class="animated fadeInUp">India has once again topped an annual list of cities with the worst air quality in the world, according to a new report, while Chinese cities have continued to show improvements from the previous year.</p>
+                <p>class="animated fadeInUp">India has once again topped an annual list of cities with the worst air quality in the world, according to a new report, while Chinese cities have continued to show improvements from the previous year.</p>
                 <a href="https://edition.cnn.com/2020/02/25/health/most-polluted-cities-india-pakistan-intl-hnk/index.html" class="btn-get-started animated fadeInUp scrollto">Know More</a>
               </div>
             </div>
@@ -147,7 +147,7 @@
             <div class="count-box">
               <i class="icofont-document-folder"></i>
               <span data-toggle="counter-up" id='dom-conc-id'>23</span> 
-              <p id ="dominant-pollutant-id"><strong>Dominant Pollutant : </strong>Carbon Monoxide.</p>
+              <p id ="dominant-pollutant-id"><strong>Dominant Pollutant: </strong>Carbon Monoxide.</p>
               
             </div>
           </div>
@@ -236,9 +236,10 @@
           </div>
 
           <div style="padding-left:5%; height: 100%; width:100%;">
+              
             <div style="float:left;display:inline-block;"><img style="float:right;" src="assets/img/AQI.png"></div>
-            <div style="float:left;display:inline-block; width:51%; height: 70%; padding-top: 10%">
-              <!-- <span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span> -->
+            <div style="float:left;display:inline-block; width:51%; height: 70%; padding-top:2%">
+              <p> <strong>&nbsp; &nbsp; &nbsp; Weather forceast-24hours (Precipitation ,Humidity, Windspeed) </strong> <p>
               <div class="climacell-widget" data-apikey="wlSineIlG7KDWzVTUvn2CzcD3SCtdfBe" data-type="hourly" data-location-name="Delhi, India" data-location-lon="77.2217831" data-location-lat="28.68627380000001" data-size-mode="large" data-font-color="#6b7b97" data-background-color="#fff" data-font-family="verdana" data-weather-params="temp:C,precipitation:mm/hr,wind_speed:m/s,humidity:%,cloud_cover:%" data-precipitation-timeline="true" data-sunrise-sunset="true" data-allow-users-enter-address="true" ></div>
             
             </div>
@@ -246,6 +247,76 @@
           </div>
           
           <script type="text/javascript" src="https://widgets-viewer.climacell.co/v1/sdk.js"></script>
+        </div>
+
+        <div class="row">
+
+<div class="tab_container" id="app">
+  <div class="tab">
+    <h2>What are you breathing ?</h2>
+    
+      <div class="menu">
+        <div class="menu__item menu__item--first" :class="[ active === 0 ? 'is-active' : '']" @click="selectedContent(0)">CO</div>
+        <div class="menu__item menu__item--second" :class="[ active === 1 ? 'is-active' : '']" @click="selectedContent(1)">NO2</div>
+        <div class="menu__item menu__item--thirst" :class="[ active === 2 ? 'is-active' : '']" @click="selectedContent(2)">O3</div>
+        <div class="menu__item menu__item--fourth" :class="[ active === 3 ? 'is-active' : '']" @click="selectedContent(3)">PM 10</div>
+        <div class="menu__item menu__item--fifth" :class="[ active === 4 ? 'is-active' : '']" @click="selectedContent(4)">PM 2.5</div>
+        <div class="menu__item menu__item--sixth" :class="[ active === 5 ? 'is-active' : '']" @click="selectedContent(5)">SO2</div>
+        <div class="menu__line" :class="className"></div>
+      </div>
+      
+      <div class="contents">
+        <transition :name="animation" mode="out-in">
+          <div class="contents__content" v-if="active === 0" key="0">
+            
+            <h2>Carbon Monoxide</h2>
+            <h3>Allowed conc : 9 ppm</h3>
+            <p><strong>Sources :</strong>Typically originates from incomplete combustion of carbon fuels, such as that which occurs in car engines and power plants.</p>
+            <p><strong>Effects :</strong>When inhaled, carbon monoxide can prevent the blood from carrying oxygen. Exposure may cause dizziness.</p>
+          
+          </div>
+          
+          <div class="contents__content" v-if="active === 1" key="1">
+            
+            <h2>Nitrogen Dioxide</h2>
+            <h3>Allowed conc : 100ppb</h3>
+            <p><strong>Sources :</strong>Main sources are fuel burning processes, such as those used in industry and transportation.</p>
+            <p><strong>Effects :</strong>Exposure may cause increased bronchial reactivity in patients with asthma, lung function decline in patients with COPD, and increased risk of respiratory infections, especially in young children.</p>
+          </div>
+          
+          <div class="contents__content" v-if="active === 2" key="2">
+            
+            <h2>Ozone</h2>
+            <h3>Allowed conc : 100 μg/m3</h3>
+            <p><strong>Sources :</strong>Ozone is created in a chemical reaction between atmospheric oxygen, nitrogen oxides, carbon monoxide and organic compounds, in the presence of sunlight.</p>
+            <p><strong>Effects :</strong>Ozone can irritate the airways and cause coughing, a burning sensation, wheezing and shortness of breath. Additionally, ozone is one of the major components of photochemical smog.</p>
+          </div>
+          <div class="contents__content" v-if="active === 3" key="3">
+            
+              <h2>Inhalable Particulate Matter</h2>
+              <h3>Allowed conc : 150 μg/m3</h3>
+              <p><strong>Sources :</strong>Main sources are combustion processes (e.g. indoor heating, wildfires), mechanical processes .</p>
+              <p><strong>Effects :</strong>Inhalable particles can penetrate into the lungs. Short term exposure can cause irritation of the airways, coughing.</p>
+            </div>
+            <div class="contents__content" v-if="active === 4" key="4">
+            
+                <h2>Fine particulate matter</h2>
+                <h3>Allowed conc : 35 μg/m3</h3>
+                <p><strong>Sources :</strong>Main sources are combustion processes (e.g. power plants, indoor heating, car exhausts, wildfires), mechanical processes.</p>
+                <p><strong>Effects :</strong>Fine particles can penetrate into the lungs and bloodstream. Short term exposure can cause irritation of the airways, coughing .</p>
+              </div>
+              <div class="contents__content" v-if="active === 5" key="5">
+            
+                  <h2>Sulfur dioxide</h2>
+                  <h3>Allowed conc : 75 ppb</h3>
+                  <p><strong>Sources :</strong>The largest source of SO2 in the atmosphere is the burning of fossil fuels by power plants and other industrial facilities. Smaller sources of SO2 emissions include: industrial processes such as extracting metal from ore.</p>
+                  <p><strong>Effects :</strong>Sulfur dioxide affects human health when it is breathed in. It irritates the nose, throat, and airways to cause coughing, wheezing.</p>
+                </div>
+          
+        </transition>
+      </div>
+    </div>
+  </div>
         </div>
 
       </div>
@@ -455,5 +526,59 @@ document.getElementById("dom-conc-id").innerHTML = dom_pollutant_conc;
 
 
 </script>
+
+
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            active: 0,
+            animation: 'fadeUp',
+            previous: 0,
+            className: ''
+        },
+        methods: {
+            selectedContent(index) {
+                this.active = index;
+    
+                if(index > this.previous) {
+                    this.animation = 'fadeUp';
+                }
+    
+                if(index < this.previous) {
+                    this.animation = 'fadeDown';
+                }
+    
+                this.previous = index;
+                if(index==0){
+                  this.className = 'activeFirst'
+                }
+                else
+                if(index === 1) {
+                    this.className = 'activeSecond'
+                } 
+                else if(index === 2) {
+                    this.className = 'activeThirst'
+                } else {
+                    if(index === 3){
+                      this.className ='activeFourth'
+                    }
+                  else{
+                    if(index===4){
+                      this.className ='activeFifth'
+                    }
+                    else{
+                      if(index==5){
+                        this.className ='activeSixth'
+                      }
+                    }
+                  }
+                    
+                }
+            }
+        }
+    })
+    </script>
 
 </html>

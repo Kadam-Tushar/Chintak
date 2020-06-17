@@ -11,9 +11,9 @@
       <div class="menu__item menu__item--first" :class="[ active === 0 ? 'is-active' : '']" @click="selectedContent(0)">CO</div>
       <div class="menu__item menu__item--second" :class="[ active === 1 ? 'is-active' : '']" @click="selectedContent(1)">NO2</div>
       <div class="menu__item menu__item--thirst" :class="[ active === 2 ? 'is-active' : '']" @click="selectedContent(2)">O3</div>
-      <div class="menu__item menu__item--thirst" :class="[ active === 2 ? 'is-active' : '']" @click="selectedContent(2)">PM 10</div>
-      <div class="menu__item menu__item--thirst" :class="[ active === 2 ? 'is-active' : '']" @click="selectedContent(2)">PM 2.5</div>
-      <div class="menu__item menu__item--thirst" :class="[ active === 2 ? 'is-active' : '']" @click="selectedContent(2)">SO2</div>
+      <div class="menu__item menu__item--fourth" :class="[ active === 3 ? 'is-active' : '']" @click="selectedContent(3)">PM 10</div>
+      <div class="menu__item menu__item--fifth" :class="[ active === 4 ? 'is-active' : '']" @click="selectedContent(4)">PM 2.5</div>
+      <div class="menu__item menu__item--six" :class="[ active === 5 ? 'is-active' : '']" @click="selectedContent(5)">SO2</div>
       <div class="menu__line" :class="className"></div>
     </div>
     
@@ -22,24 +22,49 @@
         <div class="contents__content" v-if="active === 0" key="0">
           
           <h2>Carbon Monoxide</h2>
+          <h3>Allowed conc : 9 ppm</h3>
           <p><strong>Sources :</strong>Typically originates from incomplete combustion of carbon fuels, such as that which occurs in car engines and power plants.</p>
           <p><strong>Effects :</strong>When inhaled, carbon monoxide can prevent the blood from carrying oxygen. Exposure may cause dizziness.</p>
         
         </div>
         
         <div class="contents__content" v-if="active === 1" key="1">
-          <span class="material-icons">flash_on</span>
-          <h2>Second Section</h2>
-          <p>Molestiae dolore itaque at dolor, odio blanditiis sequi, tempore illum doloremque repellat dolores deserunt debitis, rem eaque! Magnam placeat esse vero quisquam!</p>
-          <button>Learn more</button>
+          
+          <h2>Nitrogen Dioxide</h2>
+          <h3>Allowed conc : 100ppb</h3>
+          <p><strong>Sources :</strong>Main sources are fuel burning processes, such as those used in industry and transportation.</p>
+          <p><strong>Effects :</strong>Exposure may cause increased bronchial reactivity in patients with asthma, lung function decline in patients with COPD, and increased risk of respiratory infections, especially in young children.</p>
         </div>
         
         <div class="contents__content" v-if="active === 2" key="2">
-          <span class="material-icons">lock</span>
-          <h2>Thirst Section</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, cum maxime reprehenderit quisquam ratione eaque veritatis perspiciatis totam.</p>
-          <button>Learn more</button>
+          
+          <h2>Ozone</h2>
+          <h3>Allowed conc : 100 μg/m3</h3>
+          <p><strong>Sources :</strong>Ozone is created in a chemical reaction between atmospheric oxygen, nitrogen oxides, carbon monoxide and organic compounds, in the presence of sunlight.</p>
+          <p><strong>Effects :</strong>Ozone can irritate the airways and cause coughing, a burning sensation, wheezing and shortness of breath. Additionally, ozone is one of the major components of photochemical smog.</p>
         </div>
+        <div class="contents__content" v-if="active === 3" key="3">
+          
+            <h2>Inhalable Particulate Matter</h2>
+            <h3>Allowed conc : 150 μg/m3</h3>
+            <p><strong>Sources :</strong>Main sources are combustion processes (e.g. indoor heating, wildfires), mechanical processes (e.g. construction, mineral dust, agriculture) and biological particles (e.g. pollen, bacteria, mold).</p>
+            <p><strong>Effects :</strong>Inhalable particles can penetrate into the lungs. Short term exposure can cause irritation of the airways, coughing, and aggravation of heart and lung diseases, expressed as difficulty breathing, heart attacks and even premature death</p>
+          </div>
+          <div class="contents__content" v-if="active === 4" key="4">
+          
+              <h2>Fine particulate matter</h2>
+              <h3>Allowed conc : 35 μg/m3</h3>
+              <p><strong>Sources :</strong>Main sources are combustion processes (e.g. power plants, indoor heating, car exhausts, wildfires), mechanical processes (e.g. construction, mineral dust) and biological particles (e.g. bacteria, viruses).</p>
+              <p><strong>Effects :</strong>Fine particles can penetrate into the lungs and bloodstream. Short term exposure can cause irritation of the airways, coughing and aggravation of heart and lung diseases, expressed as difficulty breathing, heart attacks and even premature death.</p>
+            </div>
+            <div class="contents__content" v-if="active === 5" key="5">
+          
+                <h2>Sulfur dioxide</h2>
+                <h3>Allowed conc : 75 ppb</h3>
+                <p><strong>Sources :</strong>The largest source of SO2 in the atmosphere is the burning of fossil fuels by power plants and other industrial facilities. Smaller sources of SO2 emissions include: industrial processes such as extracting metal from ore.</p>
+                <p><strong>Effects :</strong>Sulfur dioxide affects human health when it is breathed in. It irritates the nose, throat, and airways to cause coughing, wheezing.shortness of breath, or a tight feeling around the chest. The effects of sulfur dioxide are felt very quickly and most people would feel the worst symptoms in 10 or 15 minutes after breathing it in.</p>
+              </div>
+        
       </transition>
     </div>
   </div>
@@ -52,9 +77,9 @@
         <div class="menu__item menu__item--first" :class="[ active === 0 ? 'is-active' : '']" @click="selectedContent(0)">Active</div>
         <div class="menu__item menu__item--second" :class="[ active === 1 ? 'is-active' : '']" @click="selectedContent(1)">Asthama</div>
         <div class="menu__item menu__item--thirst" :class="[ active === 2 ? 'is-active' : '']" @click="selectedContent(2)">Children</div>
-        <div class="menu__item menu__item--thirst" :class="[ active === 2 ? 'is-active' : '']" @click="selectedContent(2)">Elderly</div>
-        <div class="menu__item menu__item--thirst" :class="[ active === 2 ? 'is-active' : '']" @click="selectedContent(2)">General</div>
-        <div class="menu__item menu__item--thirst" :class="[ active === 2 ? 'is-active' : '']" @click="selectedContent(2)">Heart</div>
+        <div class="menu__item menu__item--fourth" :class="[ active === 3 ? 'is-active' : '']" @click="selectedContent(2)">Elderly</div>
+        <div class="menu__item menu__item--fifth" :class="[ active === 4 ? 'is-active' : '']" @click="selectedContent(2)">General</div>
+        <div class="menu__item menu__item--sixth" :class="[ active === 5 ? 'is-active' : '']" @click="selectedContent(2)">Heart</div>
         <div class="menu__line" :class="className"></div>
       </div>
       
@@ -113,6 +138,22 @@
                 } else if(index === 2) {
                     this.className = 'activeThirst'
                 } else {
+                  if(index === 2) {
+                    this.className = 'active'
+                }
+                else {
+                  if(index === 3) {
+                    this.className = 'activeThirst'
+                }
+                else {
+                  if(index === 4) {
+                    this.className = 'activeThirst'
+                }
+                else {
+                  if(index === 5) {
+                    this.className = 'activeThirst'
+                }
+                else
                     this.className = ''
                 }
             }
@@ -148,7 +189,7 @@
     align-items: center;
  }
   .tab {
-    width: 32rem;
+    width: 50rem;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
@@ -158,7 +199,7 @@
   .menu {
     display: flex;
     justify-content: space-between;
-    width: 28rem;
+    width: 50rem;
     position: relative;
  }
   .menu::after {
