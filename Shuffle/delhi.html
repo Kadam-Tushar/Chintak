@@ -54,7 +54,7 @@
             <div class="carousel-background"><img src="assets/img/slide/slide-1.jpg" alt=""></div>
             <div class="carousel-container">
               <div class="carousel-content">
-                <h2 class="animated fadeInDown">Welcome to <span><strong>'Chintak'</strong> : Air Pollution Monitoring and Forecasting System </span></h2>
+                <h2 class="animated fadeInDown">Welcome to <span><strong>'चिंतक'</strong> : Air Pollution Monitoring and Forecasting System </span></h2>
                 <p class="animated fadeInUp">"There's so much pollution in the air now that if it weren't for our lungs there'd be no place to put it all." ~ Robert Orben</p>
                 
               </div>
@@ -67,7 +67,7 @@
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animated fadeInDown">21/30 cities with the worst air pollution are in India</h2>
-                <p>class="animated fadeInUp">India has once again topped an annual list of cities with the worst air quality in the world, according to a new report, while Chinese cities have continued to show improvements from the previous year.</p>
+                <p class="animated fadeInUp">India has once again topped an annual list of cities with the worst air quality in the world, according to a new report, while Chinese cities have continued to show improvements from the previous year.</p>
                 <a href="https://edition.cnn.com/2020/02/25/health/most-polluted-cities-india-pakistan-intl-hnk/index.html" class="btn-get-started animated fadeInUp scrollto">Know More</a>
               </div>
             </div>
@@ -106,9 +106,9 @@
     <div class="container d-flex">
 
       <div class="logo mr-auto">
-        <h1 class="text-light"><a href="index.html"><span>Chintak</span></a></h1>
+        <!-- <h1 class="text-light"><a href="index.html"><span>Chintak</span></a></h1> -->
         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        <a href="index.html"><img src="assets/img/chintak_logo_1.png" alt="" class="img-fluid"></a>
       </div>
 
       <nav class="nav-menu d-none d-lg-block">
@@ -252,16 +252,17 @@
         <div class="row">
 
 <div class="tab_container" id="app">
+  
   <div class="tab">
     <h2>What are you breathing ?</h2>
     
       <div class="menu">
-        <div class="menu__item menu__item--first" :class="[ active === 0 ? 'is-active' : '']" @click="selectedContent(0)">CO</div>
-        <div class="menu__item menu__item--second" :class="[ active === 1 ? 'is-active' : '']" @click="selectedContent(1)">NO2</div>
-        <div class="menu__item menu__item--thirst" :class="[ active === 2 ? 'is-active' : '']" @click="selectedContent(2)">O3</div>
-        <div class="menu__item menu__item--fourth" :class="[ active === 3 ? 'is-active' : '']" @click="selectedContent(3)">PM 10</div>
-        <div class="menu__item menu__item--fifth" :class="[ active === 4 ? 'is-active' : '']" @click="selectedContent(4)">PM 2.5</div>
-        <div class="menu__item menu__item--sixth" :class="[ active === 5 ? 'is-active' : '']" @click="selectedContent(5)">SO2</div>
+        <div  class="menu__item menu__item--first" :class="[ active === 0 ? 'is-active' : '']" @click="selectedContent(0)">CO<p id="CO_CONC" style="font-size:1rem">900 ppb</p></div>
+        <div  class="menu__item menu__item--second" :class="[ active === 1 ? 'is-active' : '']" @click="selectedContent(1)">NO2<p id="NO2_CONC" style="font-size:1rem">100 ppb</p></div>
+        <div  class="menu__item menu__item--thirst" :class="[ active === 2 ? 'is-active' : '']" @click="selectedContent(2)">O3 <p id="O3_CONC" style="font-size:1rem">100 ug/m3</p></div>
+        <div  class="menu__item menu__item--fourth" :class="[ active === 3 ? 'is-active' : '']" @click="selectedContent(3)">PM 10<p id="PM10_CONC" style="font-size:1rem">150 ug/m3</p></div>
+        <div  class="menu__item menu__item--fifth" :class="[ active === 4 ? 'is-active' : '']" @click="selectedContent(4)">PM 2.5<p id="PM25_CONC" style="font-size:1rem">35 ug/m3 </p></div>
+        <div  class="menu__item menu__item--sixth" :class="[ active === 5 ? 'is-active' : '']" @click="selectedContent(5)">SO2<p id="SO2_CONC" style="font-size:1rem">75 ppb</p></div>
         <div class="menu__line" :class="className"></div>
       </div>
       
@@ -270,7 +271,7 @@
           <div class="contents__content" v-if="active === 0" key="0">
             
             <h2>Carbon Monoxide</h2>
-            <h3>Allowed conc : 9 ppm</h3>
+            <h3>Allowed conc : 900 ppb</h3>
             <p><strong>Sources :</strong>Typically originates from incomplete combustion of carbon fuels, such as that which occurs in car engines and power plants.</p>
             <p><strong>Effects :</strong>When inhaled, carbon monoxide can prevent the blood from carrying oxygen. Exposure may cause dizziness.</p>
           
@@ -279,7 +280,7 @@
           <div class="contents__content" v-if="active === 1" key="1">
             
             <h2>Nitrogen Dioxide</h2>
-            <h3>Allowed conc : 100ppb</h3>
+            <h3>Allowed conc : 45 ppb</h3>
             <p><strong>Sources :</strong>Main sources are fuel burning processes, such as those used in industry and transportation.</p>
             <p><strong>Effects :</strong>Exposure may cause increased bronchial reactivity in patients with asthma, lung function decline in patients with COPD, and increased risk of respiratory infections, especially in young children.</p>
           </div>
@@ -287,7 +288,7 @@
           <div class="contents__content" v-if="active === 2" key="2">
             
             <h2>Ozone</h2>
-            <h3>Allowed conc : 100 μg/m3</h3>
+            <h3>Allowed conc : 40 ppb</h3>
             <p><strong>Sources :</strong>Ozone is created in a chemical reaction between atmospheric oxygen, nitrogen oxides, carbon monoxide and organic compounds, in the presence of sunlight.</p>
             <p><strong>Effects :</strong>Ozone can irritate the airways and cause coughing, a burning sensation, wheezing and shortness of breath. Additionally, ozone is one of the major components of photochemical smog.</p>
           </div>
@@ -308,7 +309,7 @@
               <div class="contents__content" v-if="active === 5" key="5">
             
                   <h2>Sulfur dioxide</h2>
-                  <h3>Allowed conc : 75 ppb</h3>
+                  <h3>Allowed conc : 35 ppb</h3>
                   <p><strong>Sources :</strong>The largest source of SO2 in the atmosphere is the burning of fossil fuels by power plants and other industrial facilities. Smaller sources of SO2 emissions include: industrial processes such as extracting metal from ore.</p>
                   <p><strong>Effects :</strong>Sulfur dioxide affects human health when it is breathed in. It irritates the nose, throat, and airways to cause coughing, wheezing.</p>
                 </div>
@@ -316,7 +317,67 @@
         </transition>
       </div>
     </div>
+    
+  
+        
   </div>
+  <div class="tab_container" id="app2">
+      <div class="tab">
+          <h2>Health Recommendations</h2>
+          
+            <div class="menu">
+              <div  class="menu__item menu__item--first" :class="[ active === 0 ? 'is-active' : '']" @click="selectedContent(0)">Youth</div>
+              <div  class="menu__item menu__item--second" :class="[ active === 1 ? 'is-active' : '']" @click="selectedContent(1)">Asthama</div>
+              <div  class="menu__item menu__item--thirst" :class="[ active === 2 ? 'is-active' : '']" @click="selectedContent(2)">Children</div>
+              <div  class="menu__item menu__item--fourth" :class="[ active === 3 ? 'is-active' : '']" @click="selectedContent(3)">Elderly</div>
+              <div  class="menu__item menu__item--fifth" :class="[ active === 4 ? 'is-active' : '']" @click="selectedContent(4)">Heart</div>
+              <div  class="menu__item menu__item--sixth" :class="[ active === 5 ? 'is-active' : '']" @click="selectedContent(5)">Pregnant</div>
+              <div class="menu__line" :class="className"></div>
+            </div>
+            
+            <div class="contents">
+              <transition :name="animation" mode="out-in">
+                <div class="contents__content" v-if="active === 0" key="0">
+                  
+                  <h2>Avoid intense activities outdoors.</h2>
+                  
+                  <p>Stay away from busy roads, construction sites, open fires and other sources of smoke.</p>
+                  
+                
+                </div>
+                
+                <div class="contents__content" v-if="active === 1" key="1">
+                 
+                    <h2>Regulary meet your familly doctor and check status of your Respiratory System.</h2>
+                    <p>Do not travel in chaotic area.</p>
+                </div>
+                
+                <div class="contents__content" v-if="active === 2" key="2">
+                    <h2>Keep healthy diet for children.</h2>
+                    <p>Their lungs are still developing, and air pollution can interfere with this biological process.Their bodies are less able to metabolize, detoxify, and excrete the toxicants contained in air pollution.</p>
+                </div>
+                <div class="contents__content" v-if="active === 3" key="3">
+                  
+                    <h2>Wear mask while travelling outdoor.</h2>
+                    <p>Stay away from raodside travel. If you develope ithing sensation or breathing problems ,visit nearby doctor as soon as possible.</p>
+                </div>
+                  <div class="contents__content" v-if="active === 4" key="4">
+                  
+                      <h2>Do not involve in heavy exerise.</h2>
+                      <p>Always keep your medications with youself and never miss prescribed medications. Keep away from vehicle ,polluted areas.</p>
+                    </div>
+                    <div class="contents__content" v-if="active === 5" key="5">
+                  
+                        <h2>Avoid public places and do not smoke, it is injurious to your baby!</h2>
+                        <p>Pregnant women and children should avoid exposure to paint fumes and limit their time in freshly painted rooms. </p>
+                        
+                      </div>
+                
+              </transition>
+            </div>
+          </div>    
+      </div>
+  
         </div>
 
       </div>
@@ -516,6 +577,16 @@
 document.getElementById("last-updated-id").innerHTML = last_updated;
 document.getElementById("dominant-pollutant-id").innerHTML ="<strong>Dominant Pollutant :</strong> "+dominant_pollutant+" ("+dom_pollutant_conc_unit+" )";
 document.getElementById("dom-conc-id").innerHTML = dom_pollutant_conc;
+document.getElementById("CO_CONC").innerHTML = data['data']['pollutants']['co']['concentration']['value']+"&nbsp "+data['data']['pollutants']['co']['concentration']['units'];
+document.getElementById("NO2_CONC").innerHTML = data['data']['pollutants']['no2']['concentration']['value']+" "+data['data']['pollutants']['no2']['concentration']['units'];
+document.getElementById("O3_CONC").innerHTML = data['data']['pollutants']['o3']['concentration']['value']+" "+data['data']['pollutants']['o3']['concentration']['units'];
+document.getElementById("PM10_CONC").innerHTML = data['data']['pollutants']['pm10']['concentration']['value']+" "+data['data']['pollutants']['pm10']['concentration']['units'];
+document.getElementById("PM25_CONC").innerHTML = data['data']['pollutants']['pm25']['concentration']['value']+" "+data['data']['pollutants']['pm25']['concentration']['units'];
+document.getElementById("SO2_CONC").innerHTML = data['data']['pollutants']['so2']['concentration']['value']+" "+data['data']['pollutants']['so2']['concentration']['units'];
+
+
+
+
 
 
   }
@@ -530,8 +601,57 @@ document.getElementById("dom-conc-id").innerHTML = dom_pollutant_conc;
 
 
 <script>
-    new Vue({
+    var v1 = new Vue({
         el: '#app',
+        data: {
+            active: 0,
+            animation: 'fadeUp',
+            previous: 0,
+            className: ''
+        },
+        methods: {
+            selectedContent(index) {
+                this.active = index;
+    
+                if(index > this.previous) {
+                    this.animation = 'fadeUp';
+                }
+    
+                if(index < this.previous) {
+                    this.animation = 'fadeDown';
+                }
+    
+                this.previous = index;
+                if(index==0){
+                  this.className = 'activeFirst'
+                }
+                else
+                if(index === 1) {
+                    this.className = 'activeSecond'
+                } 
+                else if(index === 2) {
+                    this.className = 'activeThirst'
+                } else {
+                    if(index === 3){
+                      this.className ='activeFourth'
+                    }
+                  else{
+                    if(index===4){
+                      this.className ='activeFifth'
+                    }
+                    else{
+                      if(index==5){
+                        this.className ='activeSixth'
+                      }
+                    }
+                  }
+                    
+                }
+            }
+        }
+    })
+   var v2= new Vue({
+        el: '#app2',
         data: {
             active: 0,
             animation: 'fadeUp',
