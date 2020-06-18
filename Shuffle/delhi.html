@@ -30,6 +30,9 @@
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/vuex"></script>
 
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+
   <!-- =======================================================
   * Template Name: Shuffle - v2.0.0
   * Template URL: https://bootstrapmade.com/bootstrap-3-one-page-template-free-shuffle/
@@ -390,137 +393,33 @@
 
         <div class="section-title">
           <h2>Predictions</h2>
-          <p>We try to predict concentrations of pollutants for next of couple of hours using <strong>Machine learning </strong> models on <strong>cloud platforms</strong>.</p>
-        </div>
+          <p>We try to predict concentrations of pollutants for next  12  hours from current time using our <strong>Machine learning </strong> models which are running on <strong>cloud platforms</strong>.</p>
+          <div style="width:80%; padding-left: 20%; padding-top:4%;">
+              <canvas  id="co-lc" width="600" height="500"></canvas>
+          </div>
 
-        <div class="row">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">CO</li>
-              <li data-filter=".filter-card">NO2</li>
-              <li data-filter=".filter-web">PM10</li>
-            </ul>
+          <div style="width:80%; padding-left: 20%;padding-top:4%;">
+              <canvas  id="no2-lc" width="600" height="500"></canvas>
+          </div>
+
+          <div style="width:80%; padding-left: 20%;padding-top:4%;">
+              <canvas  id="o3-lc" width="600" height="500"></canvas>
+          </div>
+
+          <div style="width:80%; padding-left: 20%;padding-top:4%;">
+              <canvas  id="pm10-lc" width="600" height="500"></canvas>
+          </div>
+
+          <div style="width:80%; padding-left: 20%;padding-top:4%;">
+              <canvas  id="pm25-lc" width="600" height="500"></canvas>
+          </div>
+
+          <div style="width:80%; padding-left: 20%;padding-top:4%;">
+              <canvas  id="so2-lc" width="600" height="500"></canvas>
           </div>
         </div>
 
-        <div class="row portfolio-container">
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/delhi/portfolio-1.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>CO</h4>
-                <p>Cardbon Monoxide Concentrations in ug/m3 </p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/delhi/portfolio-1.jpg" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
-                <a href="#" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/delhi/portfolio-2.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>NO2</h4>
-                <p>Nitrogen-Dioxide</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/delhi/portfolio-2.jpg" data-gall="portfolioGallery" class="venobox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="#" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/delhi/portfolio-4.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>PM10</h4>
-                <p>Particulate matter with diameter 10 </p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/delhi/portfolio-4.jpg" data-gall="portfolioGallery" class="venobox" title="Card 2"><i class="bx bx-plus"></i></a>
-                <a href="#" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web 2</h4>
-                <p>Web</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-5.jpg" data-gall="portfolioGallery" class="venobox" title="Web 2"><i class="bx bx-plus"></i></a>
-                <a href="#" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div> -->
-
-          <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>App 3</h4>
-                <p>App</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-6.jpg" data-gall="portfolioGallery" class="venobox" title="App 3"><i class="bx bx-plus"></i></a>
-                <a href="#" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div> -->
-
-          <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Card 1</h4>
-                <p>Card</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-7.jpg" data-gall="portfolioGallery" class="venobox" title="Card 1"><i class="bx bx-plus"></i></a>
-                <a href="#" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div> -->
-
-          <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Card 3</h4>
-                <p>Card</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-8.jpg" data-gall="portfolioGallery" class="venobox" title="Card 3"><i class="bx bx-plus"></i></a>
-                <a href="#" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div> -->
-
-          <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Web 3</h4>
-                <p>Web</p>
-              </div>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-9.jpg" data-gall="portfolioGallery" class="venobox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="#" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-        </div> -->
+     
 
       </div>
     </section><!-- End Our Portfolio Section -->
@@ -550,16 +449,25 @@
 
 </body>
 <script>
+  var xaxis = [];
+      var curr= new Date();
+      for(var i=0;i<=12;++i){
+        xaxis.push((curr.getHours()+i)%24+":"+curr.getMinutes());
+      }
+  var mapPollutantToIndex = {"co":0,"no2":1,"o3":2,"pm10":3,"pm25":4,"so2":5};
+  var mapIndexToPollutant = ["co","no2","o3","pm10","pm25","so2"];
   
+      
   var http = new XMLHttpRequest();
+  var http2 = new XMLHttpRequest();
   // Delhi Lat and long
   var lat="28.7041";
   var long= "77.1025" ;
   var api_key = "a8bf14b4b1ab4d7cb73c6c0e90f00eef"
-  var delhi="https://api.breezometer.com/air-quality/v2/current-conditions?lat="+lat+"&lon="+long+"&key="+api_key+"&features=local_aqi,health_recommendations,pollutants_concentrations";
+  var place="https://api.breezometer.com/air-quality/v2/current-conditions?lat="+lat+"&lon="+long+"&key="+api_key+"&features=local_aqi,health_recommendations,pollutants_concentrations";
   var data,last_updated,aqi,dominant_pollutant,dom_pollutant_conc ;
-
-  http.open("GET",delhi,false);
+  var forecast = "https://api.breezometer.com/air-quality/v2/forecast/hourly?lat="+lat+"+&lon="+long+"&key="+api_key+"&hours=12&features=pollutants_concentrations";
+  http.open("GET",place,false);
   http.send();
   
   if(http.status == 200){
@@ -594,7 +502,148 @@ document.getElementById("SO2_CONC").innerHTML = data['data']['pollutants']['so2'
     console.log("Delhi api call not working");
   }
 
+http2.open("GET",forecast,false);
+http2.send();
+if(http2.status == 200 ){
+  var forecast_data = JSON.parse(http2.response);
+  // for each pollutant 12 entries i.e 12 * 6 = entries
+  // Array of pollutants
+  var breezo_predictions = [[],[],[],[],[],[]];
+  var our_predictions = [[],[],[],[],[],[]] ;
 
+  // adding current concentrations
+
+    for(var i=0;i<6;++i){
+      breezo_predictions[i].push(data['data']['pollutants'][mapIndexToPollutant[i]]['concentration']['value']);
+    }
+
+    
+      for(var i=0;i<12;++i){
+          for(var j=0;j<6;++j){
+            
+            breezo_predictions[j].push( forecast_data['data'][i]['pollutants'][mapIndexToPollutant[j]]['concentration']['value']);
+          }
+      }
+
+      
+     
+
+    
+
+  
+  // Adding CO predictions for next 12 hours 
+  var linecolour = "rgb(60, 133, 90)"
+  var xyaxes = {
+                scales: {
+                  yAxes: [{
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Parts per Billion '
+                    }
+                  }],
+                  xAxes: [{
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Time in Hours'
+                    }
+                  }]
+                }     
+          };
+  
+  var co = new Chart(document.getElementById("co-lc"),{
+        type :'line',
+        data:{
+          labels:xaxis,
+          datasets:[{
+          label: 'Carbon Monoxide (CO) in ppb',
+            backgroundColor: linecolour,
+            fill:false,
+            borderColor: linecolour,
+            data: breezo_predictions[mapPollutantToIndex['co']]
+          }]
+        },
+        options : xyaxes
+      });
+
+    var no2 = new Chart(document.getElementById("no2-lc"),{
+        type :'line',
+        data:{
+          labels:xaxis,
+          datasets:[{
+          label: 'Nitrogen Dioxide (NO2) in ppb',
+            backgroundColor: linecolour,
+            fill:false,
+            borderColor: linecolour,
+            data: breezo_predictions[mapPollutantToIndex['no2']]
+          }]
+        },
+        options : xyaxes
+      });
+      var o3 = new Chart(document.getElementById("o3-lc"),{
+        type :'line',
+        data:{
+          labels:xaxis,
+          datasets:[{
+          label: 'Ozone (O3) in ppb',
+            backgroundColor: linecolour,
+            fill:false,
+            borderColor: linecolour,
+            data: breezo_predictions[mapPollutantToIndex['o3']]
+          }]
+        },
+        options : xyaxes
+      });
+      var pm10 = new Chart(document.getElementById("pm10-lc"),{
+        type :'line',
+        data:{
+          labels:xaxis,
+          datasets:[{
+          label: 'Inhalable Particulate Matter in ug/m3',
+            backgroundColor: linecolour,
+            fill:false,
+            borderColor: linecolour,
+            data: breezo_predictions[mapPollutantToIndex['pm10']]
+          }]
+        },
+        options : xyaxes
+      });
+      var pm25 = new Chart(document.getElementById("pm25-lc"),{
+        type :'line',
+        data:{
+          labels:xaxis,
+          datasets:[{
+          label: 'Fine particulate matter in ug/m3',
+            backgroundColor: linecolour,
+            fill:false,
+            borderColor: linecolour,
+            data: breezo_predictions[mapPollutantToIndex['pm25']]
+          }]
+        },
+        options : xyaxes
+      });
+      var so2 = new Chart(document.getElementById("so2-lc"),{
+        type :'line',
+        data:{
+          labels:xaxis,
+          datasets:[{
+          label: 'Sulphur Dioxide in ppb',
+            backgroundColor: linecolour,
+            fill:false,
+            borderColor: linecolour,
+            data: breezo_predictions[mapPollutantToIndex['so2']]
+          }]
+        },
+        options : xyaxes
+        
+      });
+
+
+
+
+}
+else{
+  console.log("forecast not working ! ");
+}
 
 </script>
 

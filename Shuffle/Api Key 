@@ -33,3 +33,6 @@ function initMap() {
 }
 
 https://tiles.breezometer.com/v1/air-quality/breezometer-aqi/current-conditions/{1}/{2}/{1}.png?key=184bcc39ee3d43fab36d05c9de9feae3
+
+Breezometer Hourly Forecast :
+https://api.breezometer.com/air-quality/v2/forecast/hourly?lat=19.0735&lon=72.8995&key=a8bf14b4b1ab4d7cb73c6c0e90f00eef&hours=12&features=pollutants_concentrations
