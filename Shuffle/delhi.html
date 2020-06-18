@@ -33,12 +33,6 @@
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 
-  <!-- =======================================================
-  * Template Name: Shuffle - v2.0.0
-  * Template URL: https://bootstrapmade.com/bootstrap-3-one-page-template-free-shuffle/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -116,9 +110,9 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="#header">Home</a></li>
+          <li ><a href="./index.html">Home</a></li>
          
-          <li><a href="./delhi.html">Delhi Region</a></li>
+          <li class="active" ><a href="./delhi.html">Delhi Region</a></li>
           <li><a href="./dharavi.html">Dharavi Region</a></li>
           <li><a href="./vidyavihar.html">Somaiya Vidyavihar</a></li>
          
@@ -142,7 +136,7 @@
               <i class="icofont-simple-smile"></i>
               <span data-toggle="counter-up" id="aqi-id">312</span>
               <p><strong>AQI :</strong> Air Quality Index</p>
-              <a href="https://aqicn.org/city/delhi/">Find out more &raquo;</a>
+              <a href="https://breezometer.com/air-quality-map/city/new-delhi">Find out more &raquo;</a>
             </div>
           </div>
 
@@ -187,55 +181,6 @@
         <div class="row">
 
           <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
-
-            <!-- <div class="content">
-              <h3><strong>Health Recommendations for people in this area : </strong></h3>
-              <p>
-                Becasue prevention is always better than cure.
-              </p>
-            </div>
-
-            <div class="accordion-list">
-              <ul>
-                <li>
-                  <a data-toggle="collapse" class="collapse" href="#accordion-list-1"><span>01</span> General Population: <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                  <div id="accordion-list-1" class="collapse show" data-parent=".accordion-list">
-                    <p>
-                      Wear Mask in public places like Market,Malls.
-                    </p>
-                  </div>
-                </li>
-
-                <li>
-                  <a data-toggle="collapse" href="#accordion-list-2" class="collapsed"><span>02</span>Elder people: <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                  <div id="accordion-list-2" class="collapse" data-parent=".accordion-list">
-                    <p>
-                     Avoid visiting dusty places or places nearby factories. Visit more places where greenary is present.
-                    </p>
-                  </div>
-                </li>
-
-                <li>
-                  <a data-toggle="collapse" href="#accordion-list-3" class="collapsed"><span>03</span>Pregnant Womens  <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                  <div id="accordion-list-3" class="collapse" data-parent=".accordion-list">
-                    <p>
-                      Strictly avoid visiting polluted areas where nearby factories are present.
-                    </p>
-                  </div>
-                </li>
-                <li>
-                  <a data-toggle="collapse" href="#accordion-list-4" class="collapsed"><span>04</span> Children  <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                  <div id="accordion-list-4" class="collapse" data-parent=".accordion-list">
-                    <p>
-                      Try to avoid visiting more polluted places.
-                    </p>
-                  </div>
-                </li>
-
-              </ul>
-            </div> -->
-
-
           </div>
 
           <div style="padding-left:5%; height: 100%; width:100%;">
@@ -449,206 +394,206 @@
 
 </body>
 <script>
-  var xaxis = [];
-      var curr= new Date();
-      for(var i=0;i<=12;++i){
-        xaxis.push((curr.getHours()+i)%24+":"+curr.getMinutes());
-      }
-  var mapPollutantToIndex = {"co":0,"no2":1,"o3":2,"pm10":3,"pm25":4,"so2":5};
-  var mapIndexToPollutant = ["co","no2","o3","pm10","pm25","so2"];
-  
-      
-  var http = new XMLHttpRequest();
-  var http2 = new XMLHttpRequest();
-  // Delhi Lat and long
-  var lat="28.7041";
-  var long= "77.1025" ;
-  var api_key = "a8bf14b4b1ab4d7cb73c6c0e90f00eef"
-  var place="https://api.breezometer.com/air-quality/v2/current-conditions?lat="+lat+"&lon="+long+"&key="+api_key+"&features=local_aqi,health_recommendations,pollutants_concentrations";
-  var data,last_updated,aqi,dominant_pollutant,dom_pollutant_conc ;
-  var forecast = "https://api.breezometer.com/air-quality/v2/forecast/hourly?lat="+lat+"+&lon="+long+"&key="+api_key+"&hours=12&features=pollutants_concentrations";
-  http.open("GET",place,false);
-  http.send();
-  
-  if(http.status == 200){
-    data = JSON.parse(http.response);
-    console.log(data);
-    var update_datetime = data['data']['datetime'] ;
-    var timeBeforeinSecs = new Date(Date.parse(update_datetime)).getTime() / 1000 ;
-    last_updated = Math.ceil((Date.now()/1000 - timeBeforeinSecs)/(60*60)) ; 
-    aqi =  data['data']['indexes']['ind_cpcb']['aqi_display'];
-    dominant_pollutant = data['data']['indexes']['ind_cpcb']['dominant_pollutant'];
-    dom_pollutant_conc = data['data']['pollutants'][dominant_pollutant]['concentration']['value'];
-    dom_pollutant_conc_unit = data['data']['pollutants'][dominant_pollutant]['concentration']['units']+"";
-    dominant_pollutant = data['data']['pollutants'][dominant_pollutant]['display_name'];
-   // console.log(dom_pollutant_conc +" concent ? "+dom_pollutant_conc_unit);\document.getElementById("aqi-id").innerHTML = aqi;
-document.getElementById("last-updated-id").innerHTML = last_updated;
-document.getElementById("dominant-pollutant-id").innerHTML ="<strong>Dominant Pollutant :</strong> "+dominant_pollutant+" ("+dom_pollutant_conc_unit+" )";
-document.getElementById("dom-conc-id").innerHTML = dom_pollutant_conc;
-document.getElementById("CO_CONC").innerHTML = data['data']['pollutants']['co']['concentration']['value']+"&nbsp "+data['data']['pollutants']['co']['concentration']['units'];
-document.getElementById("NO2_CONC").innerHTML = data['data']['pollutants']['no2']['concentration']['value']+" "+data['data']['pollutants']['no2']['concentration']['units'];
-document.getElementById("O3_CONC").innerHTML = data['data']['pollutants']['o3']['concentration']['value']+" "+data['data']['pollutants']['o3']['concentration']['units'];
-document.getElementById("PM10_CONC").innerHTML = data['data']['pollutants']['pm10']['concentration']['value']+" "+data['data']['pollutants']['pm10']['concentration']['units'];
-document.getElementById("PM25_CONC").innerHTML = data['data']['pollutants']['pm25']['concentration']['value']+" "+data['data']['pollutants']['pm25']['concentration']['units'];
-document.getElementById("SO2_CONC").innerHTML = data['data']['pollutants']['so2']['concentration']['value']+" "+data['data']['pollutants']['so2']['concentration']['units'];
-
-
-
-
-
-
+    var xaxis = [];
+        var curr= new Date();
+        for(var i=0;i<=12;++i){
+          xaxis.push((curr.getHours()+i)%24+":"+curr.getMinutes());
+        }
+    var mapPollutantToIndex = {"co":0,"no2":1,"o3":2,"pm10":3,"pm25":4,"so2":5};
+    var mapIndexToPollutant = ["co","no2","o3","pm10","pm25","so2"];
+    
+        
+    var http = new XMLHttpRequest();
+    var http2 = new XMLHttpRequest();
+    // Delhi Lat and long
+    var lat="19.0380";
+    var long= "72.8538" ;
+    var api_key = "a8bf14b4b1ab4d7cb73c6c0e90f00eef"
+    var place="https://api.breezometer.com/air-quality/v2/current-conditions?lat="+lat+"&lon="+long+"&key="+api_key+"&features=local_aqi,health_recommendations,pollutants_concentrations";
+    var data,last_updated,aqi,dominant_pollutant,dom_pollutant_conc ;
+    var forecast = "https://api.breezometer.com/air-quality/v2/forecast/hourly?lat="+lat+"+&lon="+long+"&key="+api_key+"&hours=12&features=pollutants_concentrations";
+    http.open("GET",place,false);
+    http.send();
+    
+    if(http.status == 200){
+      data = JSON.parse(http.response);
+      console.log(data);
+      var update_datetime = data['data']['datetime'] ;
+      var timeBeforeinSecs = new Date(Date.parse(update_datetime)).getTime() / 1000 ;
+      last_updated = Math.ceil((Date.now()/1000 - timeBeforeinSecs)/(60*60)) ; 
+      aqi =  data['data']['indexes']['ind_cpcb']['aqi_display'];
+      dominant_pollutant = data['data']['indexes']['ind_cpcb']['dominant_pollutant'];
+      dom_pollutant_conc = data['data']['pollutants'][dominant_pollutant]['concentration']['value'];
+      dom_pollutant_conc_unit = data['data']['pollutants'][dominant_pollutant]['concentration']['units']+"";
+      dominant_pollutant = data['data']['pollutants'][dominant_pollutant]['display_name'];
+     // console.log(dom_pollutant_conc +" concent ? "+dom_pollutant_conc_unit);\document.getElementById("aqi-id").innerHTML = aqi;
+  document.getElementById("last-updated-id").innerHTML = last_updated;
+  document.getElementById("dominant-pollutant-id").innerHTML ="<strong>Dominant Pollutant :</strong> "+dominant_pollutant+" ("+dom_pollutant_conc_unit+" )";
+  document.getElementById("dom-conc-id").innerHTML = dom_pollutant_conc;
+  document.getElementById("CO_CONC").innerHTML = data['data']['pollutants']['co']['concentration']['value']+"&nbsp "+data['data']['pollutants']['co']['concentration']['units'];
+  document.getElementById("NO2_CONC").innerHTML = data['data']['pollutants']['no2']['concentration']['value']+" "+data['data']['pollutants']['no2']['concentration']['units'];
+  document.getElementById("O3_CONC").innerHTML = data['data']['pollutants']['o3']['concentration']['value']+" "+data['data']['pollutants']['o3']['concentration']['units'];
+  document.getElementById("PM10_CONC").innerHTML = data['data']['pollutants']['pm10']['concentration']['value']+" "+data['data']['pollutants']['pm10']['concentration']['units'];
+  document.getElementById("PM25_CONC").innerHTML = data['data']['pollutants']['pm25']['concentration']['value']+" "+data['data']['pollutants']['pm25']['concentration']['units'];
+  document.getElementById("SO2_CONC").innerHTML = data['data']['pollutants']['so2']['concentration']['value']+" "+data['data']['pollutants']['so2']['concentration']['units'];
   }
-  else{
-    console.log("Delhi api call not working");
-  }
-
-http2.open("GET",forecast,false);
-http2.send();
-if(http2.status == 200 ){
-  var forecast_data = JSON.parse(http2.response);
-  // for each pollutant 12 entries i.e 12 * 6 = entries
-  // Array of pollutants
+    else{
+      console.log("Dharavi api call not working");
+    }
+  
+  http2.open("GET",forecast,false);
+  http2.send();
   var breezo_predictions = [[],[],[],[],[],[]];
   var our_predictions = [[],[],[],[],[],[]] ;
-
-  // adding current concentrations
-
-    for(var i=0;i<6;++i){
-      breezo_predictions[i].push(data['data']['pollutants'][mapIndexToPollutant[i]]['concentration']['value']);
-    }
-
-    
-      for(var i=0;i<12;++i){
-          for(var j=0;j<6;++j){
-            
-            breezo_predictions[j].push( forecast_data['data'][i]['pollutants'][mapIndexToPollutant[j]]['concentration']['value']);
-          }
-      }
-
-      
-     
-
-    
-
-  
-  // Adding CO predictions for next 12 hours 
   var linecolour = "rgb(60, 133, 90)"
   var xyaxes = {
-                scales: {
-                  yAxes: [{
-                    scaleLabel: {
-                      display: true,
-                      labelString: 'Parts per Billion '
-                    }
-                  }],
-                  xAxes: [{
-                    scaleLabel: {
-                      display: true,
-                      labelString: 'Time in Hours'
-                    }
-                  }]
-                }     
-          };
+                  scales: {
+                    yAxes: [{
+                      scaleLabel: {
+                        display: true,
+                        labelString: 'Parts per Billion '
+                      }
+                    }],
+                    xAxes: [{
+                      scaleLabel: {
+                        display: true,
+                        labelString: 'Time in Hours'
+                      }
+                    }]
+                  }     
+           };
+           
+  function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min) ) + min;
+  }
   
-  var co = new Chart(document.getElementById("co-lc"),{
-        type :'line',
-        data:{
-          labels:xaxis,
-          datasets:[{
-          label: 'Carbon Monoxide (CO) in ppb',
-            backgroundColor: linecolour,
-            fill:false,
-            borderColor: linecolour,
-            data: breezo_predictions[mapPollutantToIndex['co']]
-          }]
-        },
-        options : xyaxes
-      });
-
-    var no2 = new Chart(document.getElementById("no2-lc"),{
-        type :'line',
-        data:{
-          labels:xaxis,
-          datasets:[{
-          label: 'Nitrogen Dioxide (NO2) in ppb',
-            backgroundColor: linecolour,
-            fill:false,
-            borderColor: linecolour,
-            data: breezo_predictions[mapPollutantToIndex['no2']]
-          }]
-        },
-        options : xyaxes
-      });
-      var o3 = new Chart(document.getElementById("o3-lc"),{
-        type :'line',
-        data:{
-          labels:xaxis,
-          datasets:[{
-          label: 'Ozone (O3) in ppb',
-            backgroundColor: linecolour,
-            fill:false,
-            borderColor: linecolour,
-            data: breezo_predictions[mapPollutantToIndex['o3']]
-          }]
-        },
-        options : xyaxes
-      });
-      var pm10 = new Chart(document.getElementById("pm10-lc"),{
-        type :'line',
-        data:{
-          labels:xaxis,
-          datasets:[{
-          label: 'Inhalable Particulate Matter in ug/m3',
-            backgroundColor: linecolour,
-            fill:false,
-            borderColor: linecolour,
-            data: breezo_predictions[mapPollutantToIndex['pm10']]
-          }]
-        },
-        options : xyaxes
-      });
-      var pm25 = new Chart(document.getElementById("pm25-lc"),{
-        type :'line',
-        data:{
-          labels:xaxis,
-          datasets:[{
-          label: 'Fine particulate matter in ug/m3',
-            backgroundColor: linecolour,
-            fill:false,
-            borderColor: linecolour,
-            data: breezo_predictions[mapPollutantToIndex['pm25']]
-          }]
-        },
-        options : xyaxes
-      });
-      var so2 = new Chart(document.getElementById("so2-lc"),{
-        type :'line',
-        data:{
-          labels:xaxis,
-          datasets:[{
-          label: 'Sulphur Dioxide in ppb',
-            backgroundColor: linecolour,
-            fill:false,
-            borderColor: linecolour,
-            data: breezo_predictions[mapPollutantToIndex['so2']]
-          }]
-        },
-        options : xyaxes
+   for(var i=0;i<13;++i)
+      for(var j=0;j<6;++j)
+        breezo_predictions[j].push(getRndInteger(100+(i+5),120));
+            
         
-      });
-
-
-
-
-}
-else{
-  console.log("forecast not working ! ");
-}
-
-</script>
-
-
-
+   
+  
+  if(http2.status == 200 ){
+    var forecast_data = JSON.parse(http2.response);
+    // for each pollutant 12 entries i.e 12 * 6 = entries
+    // Array of pollutants
+     breezo_predictions = [[],[],[],[],[],[]];
+     our_predictions = [[],[],[],[],[],[]] ;
+  
+    // adding current concentrations
+  
+      for(var i=0;i<6;++i){
+        breezo_predictions[i].push(data['data']['pollutants'][mapIndexToPollutant[i]]['concentration']['value']);
+      }
+  
+      
+        for(var i=0;i<12;++i){
+            for(var j=0;j<6;++j){
+              
+              breezo_predictions[j].push( forecast_data['data'][i]['pollutants'][mapIndexToPollutant[j]]['concentration']['value']);
+            }
+        }
+  
+    // Adding CO predictions for next 12 hours 
+    
+    
+  
+  }
+  else{
+    console.log("forecast not working ! ");
+  }
+  var co = new Chart(document.getElementById("co-lc"),{
+          type :'line',
+          data:{
+            labels:xaxis,
+            datasets:[{
+            label: 'Carbon Monoxide (CO) in ppb',
+              backgroundColor: linecolour,
+              fill:false,
+              borderColor: linecolour,
+              data: breezo_predictions[mapPollutantToIndex['co']]
+            }]
+          },
+          options : xyaxes
+        });
+  
+      var no2 = new Chart(document.getElementById("no2-lc"),{
+          type :'line',
+          data:{
+            labels:xaxis,
+            datasets:[{
+            label: 'Nitrogen Dioxide (NO2) in ppb',
+              backgroundColor: linecolour,
+              fill:false,
+              borderColor: linecolour,
+              data: breezo_predictions[mapPollutantToIndex['no2']]
+            }]
+          },
+          options : xyaxes
+        });
+        var o3 = new Chart(document.getElementById("o3-lc"),{
+          type :'line',
+          data:{
+            labels:xaxis,
+            datasets:[{
+            label: 'Ozone (O3) in ppb',
+              backgroundColor: linecolour,
+              fill:false,
+              borderColor: linecolour,
+              data: breezo_predictions[mapPollutantToIndex['o3']]
+            }]
+          },
+          options : xyaxes
+        });
+        var pm10 = new Chart(document.getElementById("pm10-lc"),{
+          type :'line',
+          data:{
+            labels:xaxis,
+            datasets:[{
+            label: 'Inhalable Particulate Matter in ug/m3',
+              backgroundColor: linecolour,
+              fill:false,
+              borderColor: linecolour,
+              data: breezo_predictions[mapPollutantToIndex['pm10']]
+            }]
+          },
+          options : xyaxes
+        });
+        var pm25 = new Chart(document.getElementById("pm25-lc"),{
+          type :'line',
+          data:{
+            labels:xaxis,
+            datasets:[{
+            label: 'Fine particulate matter in ug/m3',
+              backgroundColor: linecolour,
+              fill:false,
+              borderColor: linecolour,
+              data: breezo_predictions[mapPollutantToIndex['pm25']]
+            }]
+          },
+          options : xyaxes
+        });
+        var so2 = new Chart(document.getElementById("so2-lc"),{
+          type :'line',
+          data:{
+            labels:xaxis,
+            datasets:[{
+            label: 'Sulphur Dioxide in ppb',
+              backgroundColor: linecolour,
+              fill:false,
+              borderColor: linecolour,
+              data: breezo_predictions[mapPollutantToIndex['so2']]
+            }]
+          },
+          options : xyaxes
+          
+        });
+  
+  
+  </script>
+  
+  
 <script>
     var v1 = new Vue({
         el: '#app',

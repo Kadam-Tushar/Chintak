@@ -1,9 +1,12 @@
 Breezo Key = a8bf14b4b1ab4d7cb73c6c0e90f00eef
 climacell key = 3gpe4zdid4MVinzstKDWdXCszBz2XItu
 climacell key2 =wlSineIlG7KDWzVTUvn2CzcD3SCtdfBe
+temp-email = nimido5840@openavz.com
+pass = temp1234
 
-call string = "https://api.breezometer.com/air-quality/v2/current-conditions?lat=19.0735&lon=72.8995&key=184bcc39ee3d43fab36d05c9de9feae3&features=local_aqi,health_recommendations,pollutants_concentrations"
 
+delhi call string = "https://api.breezometer.com/air-quality/v2/current-conditions?lat=28.7041&lon=77.1025&key=a8bf14b4b1ab4d7cb73c6c0e90f00eef&features=local_aqi,health_recommendations,pollutants_concentrations"
+dharavi call strng ="https://api.breezometer.com/air-quality/v2/current-conditions?lat=19.0380&lon=72.8995&key=a8bf14b4b1ab4d7cb73c6c0e90f00eef3&features=local_aqi,health_recommendations,pollutants_concentrations"
 
 https://tiles.breezometer.com/v1/air-quality/breezometer-aqi/current-conditions/1/2/1.png?key=184bcc39ee3d43fab36d05c9de9feae3
 
