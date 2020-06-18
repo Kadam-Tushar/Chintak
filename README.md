@@ -1,2 +1,2 @@
-# AirQ2
-UI for Be project 
+# चिंतक
+ Chintak / चिंतक is our Final Year project. This reposityory contains User Interface of this Produc.
