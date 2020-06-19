@@ -12,4 +12,4 @@ dharavi call strng ="https://api.breezometer.com/air-quality/v2/current-conditio
 
 Breezometer Hourly Forecast :
 delhi hourly forecast
-https://api.breezometer.com/air-quality/v2/forecast/hourly?lat=19.0735&lon=72.8995&key=a8bf14b4b1ab4d7cb73c6c0e90f00eef&hours=12&features=pollutants_concentrations
+https://api.breezometer.com/air-quality/v2/forecast/hourly?lat=28.7041&lon=77.1025&key=a8bf14b4b1ab4d7cb73c6c0e90f00eef&hours=12&features=pollutants_concentrations
