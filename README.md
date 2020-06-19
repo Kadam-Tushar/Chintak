@@ -27,9 +27,9 @@ Forecasting System</h3>
 
 ------------------------------------------
 
-`Chintak or चिंतक  `  can  monitor Air of particular area and predict Air Quality with detailed description of each air pollutant present in that air.
+**Chintak or चिंतक**  can  monitor Air of particular area and predict Air Quality with detailed description of each air pollutant present in that air.
 
-Mitigating the impact of air pollution on communities and workers is a key priority for environmental professionals and industrial hygienists. But outdoor air monitoring projects can be complex, expensive and don’t always deliver useful data. That’s where our `चिंतक`  makes the difference. 
+Mitigating the impact of air pollution on communities and workers is a key priority for environmental professionals and industrial hygienists. But outdoor air monitoring projects can be complex, expensive and don’t always deliver useful data. That’s where our **चिंतक**  makes the difference. 
 
 
 **"There's so much pollution in the air now that if it weren't for our lungs there'd be no place to put it all." :-
