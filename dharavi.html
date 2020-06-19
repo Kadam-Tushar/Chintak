@@ -427,7 +427,8 @@
     dom_pollutant_conc = data['data']['pollutants'][dominant_pollutant]['concentration']['value'];
     dom_pollutant_conc_unit = data['data']['pollutants'][dominant_pollutant]['concentration']['units']+"";
     dominant_pollutant = data['data']['pollutants'][dominant_pollutant]['display_name'];
-   // console.log(dom_pollutant_conc +" concent ? "+dom_pollutant_conc_unit);\document.getElementById("aqi-id").innerHTML = aqi;
+   // console.log(dom_pollutant_conc +" concent ? "+dom_pollutant_conc_unit);
+document.getElementById("aqi-id").innerHTML = aqi;
 document.getElementById("last-updated-id").innerHTML = last_updated;
 document.getElementById("dominant-pollutant-id").innerHTML ="<strong>Dominant Pollutant :</strong> "+dominant_pollutant+" ("+dom_pollutant_conc_unit+" )";
 document.getElementById("dom-conc-id").innerHTML = dom_pollutant_conc;

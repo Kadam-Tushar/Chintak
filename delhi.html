@@ -406,8 +406,8 @@
     var http = new XMLHttpRequest();
     var http2 = new XMLHttpRequest();
     // Delhi Lat and long
-    var lat="19.0380";
-    var long= "72.8538" ;
+    var lat="28.7041";
+    var long= "77.1025" ;
     var api_key = "a8bf14b4b1ab4d7cb73c6c0e90f00eef"
     var place="https://api.breezometer.com/air-quality/v2/current-conditions?lat="+lat+"&lon="+long+"&key="+api_key+"&features=local_aqi,health_recommendations,pollutants_concentrations";
     var data,last_updated,aqi,dominant_pollutant,dom_pollutant_conc ;
@@ -426,7 +426,8 @@
       dom_pollutant_conc = data['data']['pollutants'][dominant_pollutant]['concentration']['value'];
       dom_pollutant_conc_unit = data['data']['pollutants'][dominant_pollutant]['concentration']['units']+"";
       dominant_pollutant = data['data']['pollutants'][dominant_pollutant]['display_name'];
-     // console.log(dom_pollutant_conc +" concent ? "+dom_pollutant_conc_unit);\document.getElementById("aqi-id").innerHTML = aqi;
+     // console.log(dom_pollutant_conc +" concent ? "+dom_pollutant_conc_unit);
+  document.getElementById("aqi-id").innerHTML = aqi;
   document.getElementById("last-updated-id").innerHTML = last_updated;
   document.getElementById("dominant-pollutant-id").innerHTML ="<strong>Dominant Pollutant :</strong> "+dominant_pollutant+" ("+dom_pollutant_conc_unit+" )";
   document.getElementById("dom-conc-id").innerHTML = dom_pollutant_conc;
@@ -438,7 +439,7 @@
   document.getElementById("SO2_CONC").innerHTML = data['data']['pollutants']['so2']['concentration']['value']+" "+data['data']['pollutants']['so2']['concentration']['units'];
   }
     else{
-      console.log("Dharavi api call not working");
+      console.log("delhi api call not working");
     }
   
   http2.open("GET",forecast,false);
