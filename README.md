@@ -58,7 +58,7 @@ Mitigating the impact of air pollution on communities and workers is a key prior
 
 </div>
 
-### Architecute 
+### Basic Architecture 
 
 
  ![architecture](https://github.com/Kadam-Tushar/Chintak/blob/master/assets/img/chintak_architecture.png)
