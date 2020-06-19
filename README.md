@@ -27,14 +27,14 @@ Forecasting System</h3>
 
 ------------------------------------------
 
->`Chintak or चिंतक  `  can  monitor Air of particular area and predict Air Quality with detailed description of each air pollutant present in that air.
+`Chintak or चिंतक  `  can  monitor Air of particular area and predict Air Quality with detailed description of each air pollutant present in that air.
 
->Mitigating the impact of air pollution on communities and workers is a key priority for environmental professionals and industrial hygienists. But outdoor air monitoring projects can be complex, expensive and don’t always deliver useful data. That’s where our `चिंतक`  makes the difference. 
+Mitigating the impact of air pollution on communities and workers is a key priority for environmental professionals and industrial hygienists. But outdoor air monitoring projects can be complex, expensive and don’t always deliver useful data. That’s where our `चिंतक`  makes the difference. 
 
 
-<div align="center">
-&#10077;There's so much pollution in the air now that if it weren't for our lungs there'd be no place to put it all. &#10078;  -  <a href ="https://en.wikipedia.org/wiki/Robert_Orben"> Robert Orben </a>
-</div>
+**"There's so much pollution in the air now that if it weren't for our lungs there'd be no place to put it all." :-
+ [Robert Orben](https://en.wikipedia.org/wiki/Robert_Orben)**
+
 
 
 ------------------------------------------
@@ -59,11 +59,11 @@ Forecasting System</h3>
 </div>
 
 ### Architecute 
-<div align="center>
 
-![architecture](./assets/img/chintak_architecture.png)
 
-</div>
+ ![architecture](https://github.com/Kadam-Tushar/Chintak/blob/master/assets/img/chintak_architecture.png)
+
+
 
 
 
