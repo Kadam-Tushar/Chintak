@@ -38,7 +38,7 @@ Mitigating the impact of air pollution on communities and workers is a key prior
 
 
 ------------------------------------------
-### Features
+### Features :
 
 - Deatailed Air Quality anaylsis 3 regions from India
     - Vidyavihar, Mumbai 
@@ -58,7 +58,7 @@ Mitigating the impact of air pollution on communities and workers is a key prior
 
 </div>
 
-### Architecute 
+### Basic Architecture :  
 
 
  ![architecture](https://github.com/Kadam-Tushar/Chintak/blob/master/assets/img/chintak_architecture.png)
@@ -68,13 +68,13 @@ Mitigating the impact of air pollution on communities and workers is a key prior
 
 
 ------------------------------------------
-### Contributing
+### Contributing :
 
  We're are open to `enhancements` & `bug-fixes` :smile:
 
 
 ------------------------------------------
-### Contributors
+### Contributors :
 
 - [@Kadam-Tushar](https://github.com/Kadam-Tushar)
 - [@jaygala25](https://github.com/jaygala25)
@@ -82,7 +82,7 @@ Mitigating the impact of air pollution on communities and workers is a key prior
 
 
 ------------------------------------------
-### License
+### License :
 
 - [MIT](https://github.com/Kadam-Tushar/Chintak/tree/master/LICENSE)
 
