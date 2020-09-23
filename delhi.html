@@ -415,6 +415,7 @@
     http.open("GET",place,false);
     http.send();
     
+    
     if(http.status == 200){
       data = JSON.parse(http.response);
       console.log(data);
